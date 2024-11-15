@@ -1,7 +1,9 @@
 - id: add-jira-ticket
   name: Add Jira Ticket
   description: This hook adds Jira ticket name to the commit message.
-  entry: java -jar target/uberjar/pre-commit-jira-0.1.0-SNAPSHOT-standalone.jar
-  language: system
+  language: docker
+  entry: java -jar app-standalone.jar
+  require_serial: true
   stages:
     - prepare-commit-msg
+    - pre-commit
