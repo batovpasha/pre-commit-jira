@@ -2,8 +2,8 @@
   name: Add Jira Ticket
   description: This hook adds Jira ticket name to the commit message.
   language: docker
-  entry: java -jar app-standalone.jar
+  entry: java -jar /usr/src/app/app-standalone.jar
   require_serial: true
+  # always_run: true
   stages:
-    - prepare-commit-msg
-    - pre-commit
+    - commit-msg
