@@ -4,6 +4,6 @@
   language: docker
   entry: java -jar /usr/src/app/app-standalone.jar
   require_serial: true
-  # always_run: true
+  always_run: true
   stages:
     - commit-msg
