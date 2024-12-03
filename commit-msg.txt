@@ -1,1 +1,5 @@
-very good commit message
+feat: very good commit message
+
+Optional body
+
+Optional footer

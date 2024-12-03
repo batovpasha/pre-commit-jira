@@ -3,24 +3,29 @@
   (:require [clojure.string :as str])
   (:require [clojure.test :refer [is with-test]]))
 
-(defn- get-current-branch-name
+(defn get-current-branch-name
   []
   (-> (shell/sh "git" "symbolic-ref" "--short" "HEAD")
       (:out)
       (str/replace "\n" "")))
 
-(defn- get-jira-ticket-from
-  [string]
-  (let [ticket-pattern #"[A-Z]+-\d+"]
-    (re-find ticket-pattern string)))
+(with-test
+  (defn get-jira-ticket-from
+    [string]
+    (let [ticket-pattern #"[A-Z]+-\d+"]
+      (re-find ticket-pattern string)))
 
-(comment
-  (get-jira-ticket-from "feature/TICKET-123-feature-name"))
+  (is (= "TICKET-123" (get-jira-ticket-from "feature/TICKET-123-some-feature")))
+  (is (= nil (get-jira-ticket-from "feature/some-feature"))))
 
-(defn- special-commit?
-  [commit-msg]
-  (let [is-merge-commit (str/starts-with? commit-msg "Merge ")]
-    is-merge-commit))
+(with-test
+  (defn special-commit?
+    [commit-msg]
+    (let [is-merge-commit (str/starts-with? commit-msg "Merge ")]
+      is-merge-commit))
+
+  (is (= true (special-commit? "Merge pull request")))
+  (is (= true (special-commit? "Merge branch 'develop' into feature/TICKET-123-some-feature"))))
 
 (with-test
   (defn prepend-jira-ticket
@@ -34,8 +39,6 @@
 
   (is (= "feat: TICKET-123 simple solution for a big trouble"
          (prepend-jira-ticket "feat: simple solution for a big trouble" "TICKET-123"))))
-
-(test #'prepend-jira-ticket)
 
 (comment (prepend-jira-ticket "feat: commit\nOptional body\nOptional footer" "TICKET-123"))
 
@@ -54,5 +57,3 @@
            (not (special-commit? commit-msg)))
       (->> (prepend-jira-ticket commit-msg ticket-from-branch)
            (spit commit-msg-file-path)))))
-
-(add-jira-ticket "commit-msg.txt")
