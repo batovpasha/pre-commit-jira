@@ -4,6 +4,7 @@
 
 (defn -main
   [& args]
-  (let [commit-msg-file-path (first args)]
-    (add-jira-ticket commit-msg-file-path))
-  (System/exit 1))
+  (let [[hook commit-msg-file-path] args]
+    (case hook
+      "add-jira-ticket" (add-jira-ticket commit-msg-file-path)))
+  (System/exit 0))

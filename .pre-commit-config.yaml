@@ -1,5 +1,5 @@
 repos:
   - repo: ./
-    rev: 097c26717aab108ca0c191d07989c5dde350b6b0
+    rev: a866bf94f52940534bdef8911d1681d47c5412c8
     hooks:
       - id: add-jira-ticket
