@@ -7,5 +7,3 @@
   (let [commit-msg-file-path (first args)]
     (add-jira-ticket commit-msg-file-path))
   (System/exit 1))
-
-; Left on error while building docker image
