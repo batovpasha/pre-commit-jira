@@ -39,7 +39,6 @@
 
   (is (= "feat: TICKET-123 simple solution for a big trouble"
          (prepend-jira-ticket "feat: simple solution for a big trouble" "TICKET-123")))
-
   (is (= "feat: TICKET-123 commit\nOptional body\nOptional footer"
          (prepend-jira-ticket "feat: commit\nOptional body\nOptional footer" "TICKET-123"))
       "should correctly handle commit message with body and footer"))
