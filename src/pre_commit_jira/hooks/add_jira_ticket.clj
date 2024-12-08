@@ -52,8 +52,6 @@
         branch-name (get-current-branch-name)
         ticket-from-commit-msg (get-jira-ticket-from commit-msg)
         ticket-from-branch (get-jira-ticket-from branch-name)]
-    (println "commit:" commit-msg)
-    (println "branch:" branch-name)
     ; TODO: handle case when ticket in branch name is different from ticket in commit-msg
     (when (and
            (not ticket-from-commit-msg)
