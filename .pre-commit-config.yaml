@@ -1,5 +1,5 @@
 repos:
-  - repo: ./
-    rev: a866bf94f52940534bdef8911d1681d47c5412c8
+  - repo: https://github.com/batovpasha/pre-commit-jira
+    rev: v0.1.0
     hooks:
       - id: add-jira-ticket
