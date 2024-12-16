@@ -3,12 +3,12 @@
 set -e
 
 PRE_COMMIT_JIRA_VERSION="v0.1.0"
+TMP_TEST_DIR="/tmp/pre-commit-jira-test"
 
-mkdir -p /tmp/pre-commit-jira-test
-cd /tmp/pre-commit-jira-test
+mkdir -p "${TMP_TEST_DIR}"
+cd "${TMP_TEST_DIR}"
 
-# git init > /dev/null 2>&1
-git init
+git init > /dev/null
 
 cat > .pre-commit-config.yaml <<EOF
 repos:
@@ -17,8 +17,7 @@ repos:
     hooks:
       - id: add-jira-ticket
 EOF
-# pre-commit install --hook-type commit-msg > /dev/null 2>&1
-pre-commit install --hook-type commit-msg
+pre-commit install --hook-type commit-msg > /dev/null
 
 assert_equals() {
   local expected="$1"
@@ -34,11 +33,10 @@ assert_equals() {
 }
 
 # Test cases
-# git checkout -b feature/TICKET-123-some-feature > /dev/null 2>&1
-git checkout -b feature/TICKET-123-some-feature
-# git commit --allow-empty -m "feat: add new feature" > /dev/null 2>&1
-git commit --allow-empty -m "feat: add new feature"
+TEST_CASE_1="should prepend JIRA ticket from branch to commit message"
+git checkout -b feature/TICKET-123-some-feature > /dev/null
+git commit --allow-empty -m "feat: add new feature" > /dev/null
 COMMIT_MSG=$(git log -1 --pretty=%B)
-assert_equals "feat: TICKET-123 add new feature" "$COMMIT_MSG" "should prepend JIRA ticket from branch to commit message"
+assert_equals "feat: TICKET-123 add new feature" "${COMMIT_MSG}" "${TEST_CASE_1}"
 
-rm -rf /tmp/pre-commit-jira-test
+rm -rf "${TMP_TEST_DIR}"
