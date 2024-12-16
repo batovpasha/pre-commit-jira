@@ -4,3 +4,7 @@
 doc/
 resources/
 target/
+e2e-test.sh
+*.md
+*.hgignore
+LICENSE
