@@ -45,10 +45,6 @@
                               "TICKET-123"))
       "should correctly handle commit message with body and footer"))
 
-(comment
-  (prepend-jira-ticket "feat: commit\nOptional body\nOptional footer"
-                       "TICKET-123"))
-
 (defn add-jira-ticket
   [commit-msg-file-path]
   (let [commit-msg             (slurp commit-msg-file-path)
