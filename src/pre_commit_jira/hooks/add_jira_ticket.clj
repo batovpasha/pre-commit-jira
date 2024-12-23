@@ -1,10 +1,8 @@
 (ns pre-commit-jira.hooks.add-jira-ticket
   (:require
-    [clojure.java.shell :as shell])
-  (:require
-    [clojure.string :as str])
-  (:require
-    [clojure.test :refer [is with-test]]))
+    [clojure.java.shell :as shell]
+    [clojure.string     :as str]
+    [clojure.test       :refer [is with-test]]))
 
 (defn get-current-branch-name
   []
