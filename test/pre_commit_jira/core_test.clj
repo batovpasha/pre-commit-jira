@@ -17,6 +17,7 @@
       "feat: add new feature"
       "feature/TICKET-123-some-feature"
       ['("commit-msg.txt" "feat: TICKET-123 add new feature")]
+    ;; TODO: fix justification for the vectors
     "should not prepend JIRA ticket when the commit message already contains it"
       "feat: TICKET-123 add new feature"
       "feature/TICKET-123-some-feature"
