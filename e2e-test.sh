@@ -2,6 +2,14 @@
 
 set -e
 
+if ! command -v pre-commit > /dev/null 2>&1; then
+  echo "\033[0;31m" \
+    "Please, install pre-commit to run e2e tests:" \
+    "https://pre-commit.com/"
+
+  exit 1
+fi
+
 PRE_COMMIT_JIRA_VERSION="v0.1.0"
 TMP_TEST_DIR="/tmp/pre-commit-jira-test"
 
