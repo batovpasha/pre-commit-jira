@@ -1,0 +1,45 @@
+version: 2.1
+
+parameters:
+  clojure-version:
+    type: string
+    default: '1.11.1'
+
+executors:
+  clojure:
+    docker:
+      - image: 'cimg/clojure:<< pipeline.parameters.clojure-version >>'
+
+jobs:
+  lint:
+    executor: clojure
+    steps:
+      - checkout
+      - run: lein clj-kondo
+      - run: lein zprint -c src/**/*.clj test/**/*.clj project.clj
+  # TODO: store tests results
+  test_unit:
+    executor: clojure
+    steps:
+      - checkout
+      - run: lein test
+  test_e2e:
+    executor: clojure
+    steps:
+      - checkout
+      - run:
+          name: Run end-to-end tests
+          command: ./e2e-test.sh
+  # build_image: TODO
+
+workflows:
+  version: 2
+  lint_test:
+    jobs:
+      - lint
+      - test_unit:
+          requires:
+            - lint
+      - test_e2e:
+          requires:
+            - test_unit
