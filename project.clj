@@ -5,7 +5,8 @@
   :dependencies [[org.clojure/clojure "1.12.0"]]
   :plugins      [[lein-zprint "1.2.9"]
                  [com.github.clj-kondo/lein-clj-kondo "2024.11.14"]]
-  :test-paths   ["test" "src"] ; src folder contains inline tests written using "with-test" macro
+  :test-paths   ["test" "src"] ; src folder contains inline tests written
+                               ; using "with-test" macro
   :zprint       {:old?  false,
                  :style [:justified-original
                          :sort-require
