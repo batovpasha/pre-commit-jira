@@ -2,7 +2,7 @@
   :description  "pre-commit hooks for Jira workflow"
   :url          "https://github.com/batovpasha/pre-commit-jira"
   :license      {:name "MIT", :distribution :repo}
-  :dependencies [[org.clojure/clojure "1.11.1"]]
+  :dependencies [[org.clojure/clojure "1.12.0"]]
   :plugins      [[lein-zprint "1.2.9"]]
   :zprint       {:old?  false,
                  :style [:justified-original
