@@ -42,4 +42,4 @@ workflows:
             - lint
       - test_e2e:
           requires:
-            - test_unit
+            - lint
