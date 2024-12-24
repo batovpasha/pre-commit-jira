@@ -3,7 +3,8 @@
   :url          "https://github.com/batovpasha/pre-commit-jira"
   :license      {:name "MIT", :distribution :repo}
   :dependencies [[org.clojure/clojure "1.12.0"]]
-  :plugins      [[lein-zprint "1.2.9"]]
+  :plugins      [[lein-zprint "1.2.9"]
+                 [com.github.clj-kondo/lein-clj-kondo "2024.11.14"]]
   :zprint       {:old?  false,
                  :style [:justified-original
                          :sort-require

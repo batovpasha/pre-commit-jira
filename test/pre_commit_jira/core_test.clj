@@ -1,7 +1,7 @@
 (ns pre-commit-jira.core-test
   (:require
     [clojure.java.shell   :as shell]
-    [clojure.test         :refer :all]
+    [clojure.test         :refer [are deftest is]]
     [pre-commit-jira.core :refer [-main]]))
 
 (deftest add-jira-ticket-hook
