@@ -40,13 +40,10 @@ jobs:
       - checkout
       - run: lein test
   test_e2e:
-    executor:
-      name: python/default
-      tag: << pipeline.parameters.python-version >>
+    machine:
+      image: ubuntu-2204:2022.04.2
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
       - install-pre-commit
       - run:
           name: Run end-to-end tests
