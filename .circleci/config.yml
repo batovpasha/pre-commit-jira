@@ -7,6 +7,9 @@ parameters:
   clojure-version:
     type: string
     default: '1.11.1'
+  python-version:
+    type: string
+    default: '3.12.8'
   pre-commit-version:
     type: string
     default: '4.0.1'
@@ -37,7 +40,9 @@ jobs:
       - checkout
       - run: lein test
   test_e2e:
-    executor: clojure
+    executor:
+      name: python/default
+      tag: << pipeline.parameters.python-version >>
     steps:
       - checkout
       - install-pre-commit
