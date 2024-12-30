@@ -44,9 +44,9 @@ jobs:
       name: python/default
       tag: << pipeline.parameters.python-version >>
     steps:
+      - checkout
       - setup_remote_docker:
           docker_layer_caching: false
-      - checkout
       - install-pre-commit
       - run:
           name: Run end-to-end tests
