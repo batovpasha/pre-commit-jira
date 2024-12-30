@@ -44,6 +44,8 @@ jobs:
       name: python/default
       tag: << pipeline.parameters.python-version >>
     steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
       - checkout
       - install-pre-commit
       - run:
