@@ -16,6 +16,8 @@ TMP_TEST_DIR="/tmp/pre-commit-jira-test"
 mkdir -p "${TMP_TEST_DIR}"
 cd "${TMP_TEST_DIR}"
 
+git config --global user.email "batovpasha@gmail.com"
+git config --global user.name "Pavlo Batov"
 git init >/dev/null
 
 cat >.pre-commit-config.yaml <<EOF
