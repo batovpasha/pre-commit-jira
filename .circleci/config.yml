@@ -52,7 +52,7 @@ jobs:
   build_image:
     machine:
       image: ubuntu-2004:2024.11.1
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - run: docker build -t pre-commit-jira .
