@@ -4,9 +4,6 @@
     [clojure.test         :refer [are deftest is]]
     [pre-commit-jira.core :refer [-main]]))
 
-(deftest check-cirleci-test-results-uploading
-  (is (= 1 2) "Checking test results in CircleCI"))
-
 (deftest add-jira-ticket-hook
   (are [test-name commit-msg branch-name expected]
     (let [commit-file-name "commit-msg.txt"
