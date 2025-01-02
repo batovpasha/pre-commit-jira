@@ -33,12 +33,13 @@ jobs:
       - checkout
       - run: lein clj-kondo
       - run: lein zprint -c src/**/*.clj test/**/*.clj project.clj
-  # TODO: store tests results
   test_unit:
     executor: clojure
     steps:
       - checkout
-      - run: lein test
+      - run: lein test2junit
+      - store_test_results:
+          path: target/test2junit
   test_e2e:
     machine:
       image: ubuntu-2004:2024.11.1
