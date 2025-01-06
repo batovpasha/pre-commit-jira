@@ -3,3 +3,14 @@ repos:
     rev: v0.1.0
     hooks:
       - id: add-jira-ticket
+  - repo: https://github.com/clj-kondo/clj-kondo
+    rev: v2024.11.14
+    hooks:
+      - id: clj-kondo
+  - repo: local
+    hooks:
+      - id: zprint
+        name: zprint
+        language: system
+        entry: lein zprint
+        types: [clojure]
