@@ -5,7 +5,8 @@
     [pre-commit-jira.core :refer [-main]]))
 
 (deftest add-jira-ticket-hook
-  (are [test-name commit-msg branch-name expected]
+  (are
+    [test-name commit-msg branch-name expected]
     (let [commit-file-name "commit-msg.txt"
           spit-calls       (atom [])]
       (with-redefs [slurp    (fn [& _] commit-msg)
@@ -15,18 +16,20 @@
         (is (= @spit-calls expected) test-name)))
     "should prepend JIRA ticket from branch to commit message"
       "feat: add new feature"
-      "feature/TICKET-123-some-feature"
-      ['("commit-msg.txt" "feat: TICKET-123 add new feature")]
-    ;; TODO: fix justification for the vectors
+    "feature/TICKET-123-some-feature" ['("commit-msg.txt"
+                                         "feat: TICKET-123 add new feature")]
+    ;;
+    ;;
     "should not prepend JIRA ticket when the commit message already contains it"
       "feat: TICKET-123 add new feature"
-      "feature/TICKET-123-some-feature"
-                                                                                                                                                                                 []
+    "feature/TICKET-123-some-feature" []
+    ;;
+    ;;
     "should not prepend JIRA ticket when there is no ticket in a branch name"
       "feat: add new feature"
-      "feature/some-feature"
-                                                                                                                                                                                 []
+    "feature/some-feature" []
+    ;;
+    ;;
     "should not prepend JIRA ticket when commit is a merge commit"
       "Merge branch 'develop' into feature/TICKET-123-some-feature"
-      "develop"
-                                                                                                                                                                                 []))
+    "develop" []))

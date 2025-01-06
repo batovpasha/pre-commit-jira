@@ -10,11 +10,13 @@
                                         ; written using "with-test" macro
   :test2junit-output-dir ~(or (System/getenv "CIRCLE_TEST_REPORTS")
                               "target/test2junit")
-  :zprint                {:old?  false,
-                          :style [:justified-original
-                                  :sort-require
-                                  :ns-justify
-                                  :sort-dependencies]}
+  :zprint                {:old?          false,
+                          :style         [:justified-original
+                                          :sort-require
+                                          :ns-justify
+                                          :sort-dependencies],
+                          :parse-string? true,
+                          :fn-map        {"are" [:none {:style :areguide-nl}]}}
   :main                  ^:skip-aot pre-commit-jira.core
   :target-path           "target/%s"
   :profiles              {:uberjar
