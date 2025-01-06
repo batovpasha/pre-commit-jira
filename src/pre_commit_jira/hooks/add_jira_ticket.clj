@@ -34,7 +34,7 @@
      Format: `<type>: <ticket> <description>`  
      Example: `feat: TICKET-123 simple solution for a big trouble`"
     [commit-msg ticket]
-    (let [[commit-type description] (map str/trim
+    (let [[commit-type description] (mapv str/trim
                                       (str/split commit-msg #":" 2))]
       (str commit-type ": " ticket " " description)))
   (is (= "feat: TICKET-123 simple solution for a big trouble"
