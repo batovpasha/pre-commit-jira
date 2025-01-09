@@ -8,6 +8,7 @@
                  [lein-cloverage "1.2.2"]]
   :test-paths   ["test" "src"] ; src folder contains inline tests
                                ; written using "with-test" macro
+  :cloverage    {:junit? true}
   :zprint       {:old?          false,
                  :style         [:justified-original
                                  :sort-require

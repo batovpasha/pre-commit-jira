@@ -37,7 +37,7 @@ jobs:
     executor: clojure
     steps:
       - checkout
-      - run: lein cloverage --junit
+      - run: lein cloverage
       - store_test_results:
           path: target/coverage
   test_e2e:
