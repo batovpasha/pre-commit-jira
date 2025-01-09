@@ -5,7 +5,7 @@
     [pre-commit-jira.core :refer [-main]]))
 
 (deftest test-cloverage-report-in-ci
-  (testing "to test cloverage report in ci" (is (= 1 2))))
+  (testing "to test cloverage report in ci" (is (= 1 2) "1 equals 2")))
 
 (deftest add-jira-ticket-hook
   (are
