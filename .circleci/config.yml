@@ -37,9 +37,9 @@ jobs:
     executor: clojure
     steps:
       - checkout
-      - run: lein test2junit
+      - run: lein cloverage --junit
       - store_test_results:
-          path: target/test2junit
+          path: target/coverage
   test_e2e:
     machine:
       image: ubuntu-2004:2024.11.1
