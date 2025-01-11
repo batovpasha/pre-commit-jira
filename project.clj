@@ -8,7 +8,9 @@
                  [lein-cloverage "1.2.2"]]
   :test-paths   ["test" "src"] ; src folder contains inline tests
                                ; written using "with-test" macro
-  :cloverage    {:junit? true}
+  :cloverage    {:junit?         true,
+                 :exclude-call   [clojure.test/is],
+                 :fail-threshold 95}
   :zprint       {:old?          false,
                  :style         [:justified-original
                                  :sort-require
