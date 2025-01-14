@@ -1,4 +1,6 @@
-FROM clojure:lein
+# Can't use alpine version because there is no linux/arm64/v8 OS support, therefore
+# the image can't be built on Apple Silicon
+FROM clojure:temurin-23-lein-2.11.2
 
 WORKDIR /usr/src/app
 
