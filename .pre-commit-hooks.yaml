@@ -1,6 +1,6 @@
 - id: add-jira-ticket
   name: Add Jira Ticket
-  description: This hook adds Jira ticket name to the commit message.
+  description: This hook adds Jira ticket name from the git branch to the commit message.
   language: docker
   entry: java -jar /usr/src/app/app-standalone.jar add-jira-ticket
   require_serial: true
