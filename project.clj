@@ -1,4 +1,4 @@
-(defproject pre-commit-jira "0.1.0-SNAPSHOT"
+(defproject pre-commit-jira "1.0.0-SNAPSHOT"
   :description  "Collection of pre-commit hooks for JIRA workflow"
   :url          "https://github.com/batovpasha/pre-commit-jira"
   :license      {:name "MIT", :distribution :repo}

@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/batovpasha/pre-commit-jira
-    rev: v0.1.0
+    rev: v1.0.0
     hooks:
       - id: add-jira-ticket
   - repo: https://github.com/clj-kondo/clj-kondo

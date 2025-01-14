@@ -10,7 +10,7 @@ if ! command -v pre-commit > /dev/null 2>&1; then
   exit 1
 fi
 
-PRE_COMMIT_JIRA_VERSION="v0.1.0"
+PRE_COMMIT_JIRA_VERSION="v1.0.0"
 TMP_TEST_DIR="/tmp/pre-commit-jira-test"
 
 mkdir -p "${TMP_TEST_DIR}"

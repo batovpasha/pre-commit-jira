@@ -17,7 +17,7 @@ Collection of pre-commit hooks for JIRA workflow.
     ```yaml
     repos:
       - repo: https://github.com/batovpasha/pre-commit-jira
-        rev: v0.1.0
+        rev: v1.0.0
         hooks:
           - id: add-jira-ticket
     ```
