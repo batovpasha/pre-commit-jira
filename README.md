@@ -50,7 +50,7 @@ Collection of pre-commit hooks for JIRA workflow.
 
 - Everything from usage [prerequisites](#prerequisites)
 - [Leiningen](https://leiningen.org/)
-- [Clojure](https://clojure.org/) 
+- [Clojure](https://clojure.org/)
 
 ### Unit tests (without coverage)
 
@@ -63,7 +63,7 @@ lein test
 ```shell
 lein cloverage
 # Open the coverage report ./target/coverage/index.html
-open ./target/coverage/index.html # MacOS
+open ./target/coverage/index.html     # MacOS
 xdg-open ./target/coverage/index.html # Linux
 ```
 
