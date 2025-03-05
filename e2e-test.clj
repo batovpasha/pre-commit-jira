@@ -24,12 +24,17 @@
 
 (def pre-commit-config-path
   (str (fs/path tmp-test-dir ".pre-commit-config.yaml")))
+(def pre-commit-config-template
+  "
+repos:
+  - repo: https://github.com/batovpasha/pre-commit-jira
+    rev: {{pre-commit-jira-version}}
+    hooks:
+      -id: add-jira-ticket")
 (def pre-commit-config
-  (-> (str "repos:\n"
-           "  - repo: https://github.com/batovpasha/pre-commit-jira\n"
-             "    rev: {{pre-commit-jira-version}}\n"
-           "    hooks:\n" "      -id: add-jira-ticket\n")
+  (-> pre-commit-config-template
       (str/replace "{{pre-commit-jira-version}}" pre-commit-jira-version)))
+
 (spit pre-commit-config-path pre-commit-config)
 (shell "pre-commit install --hook-type commit-msg" {:dir tmp-test-dir})
 
