@@ -1,6 +1,8 @@
 #!/usr/bin/env bb
 
-(require '[babashka.process :refer [sh shell]] '[clojure.string :as str])
+(require '[babashka.process :refer [sh shell]]
+         '[clojure.string :as str]
+         '[babashka.fs :as fs])
 
 (def is-pre-commit-installed (:exit (sh "command -v pre-commit")))
 (when-not is-pre-commit-installed
@@ -20,7 +22,8 @@
 (shell "git config --global user.name" "Pavlo Batov" {:dir tmp-test-dir})
 (shell "git init" {:dir tmp-test-dir})
 
-(def pre-commit-config-path (str tmp-test-dir "/.pre-commit-config.yaml"))
+(def pre-commit-config-path
+  (str (fs/path tmp-test-dir ".pre-commit-config.yaml")))
 (def pre-commit-config
   (-> (str "repos:\n"
            "  - repo: https://github.com/batovpasha/pre-commit-jira\n"
