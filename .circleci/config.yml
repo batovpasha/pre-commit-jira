@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run: lein clj-kondo
-      - run: lein zprint -c src/**/*.clj test/**/*.clj project.clj e2e_test.clj
+      - run: lein zprint -c ./**/*.clj
   test_unit:
     executor: clojure
     steps:

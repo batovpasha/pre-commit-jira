@@ -106,5 +106,5 @@ lein clj-kondo
 ### Format
 
 ```shell
-lein zprint src/**/*.clj test/**/*.clj project.clj
+lein zprint ./**/*.clj
 ```
