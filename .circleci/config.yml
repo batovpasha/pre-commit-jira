@@ -32,7 +32,7 @@ commands:
     steps:
       - run: curl -sLo bb.tar.gz https://github.com/babashka/babashka/releases/download/v<< pipeline.parameters.babashka-version >>/babashka-<< pipeline.parameters.babashka-version >>-linux-amd64-static.tar.gz
       - run: tar -xzf bb.tar.gz
-      - run: mv bb /usr/local/bin/bb
+      - run: sudo mv bb /usr/local/bin/bb
 
 jobs:
   lint:
