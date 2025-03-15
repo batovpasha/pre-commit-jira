@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run: lein clj-kondo
-      - run: lein zprint -c src/**/*.clj test/**/*.clj project.clj
+      - run: lein zprint -c src/**/*.clj test/**/*.clj project.clj e2e_test.clj
   test_unit:
     executor: clojure
     steps:
@@ -58,7 +58,7 @@ jobs:
       - install-pre-commit
       - run:
           name: Run end-to-end tests
-          command: bb ./e2e-test.clj
+          command: bb ./e2e_test.clj
   build_image:
     machine:
       image: ubuntu-2004:2024.11.1
