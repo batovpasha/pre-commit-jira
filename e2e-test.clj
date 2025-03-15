@@ -6,7 +6,7 @@
          '[clojure.test :refer [use-fixtures deftest is run-tests]])
 
 (def is-pre-commit-installed
-  (-> (sh "command -v pre-commit")
+  (-> (sh "which" "pre-commit")
       :exit
       zero?))
 (when-not is-pre-commit-installed
