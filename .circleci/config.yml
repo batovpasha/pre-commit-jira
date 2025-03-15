@@ -58,7 +58,7 @@ jobs:
       - install-pre-commit
       - run:
           name: Run end-to-end tests
-          command: bb ./e2e-test.sh
+          command: bb ./e2e-test.clj
   build_image:
     machine:
       image: ubuntu-2004:2024.11.1
