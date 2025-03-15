@@ -51,6 +51,7 @@ Collection of pre-commit hooks for JIRA workflow.
 - Everything from usage [prerequisites](#prerequisites)
 - [Leiningen](https://leiningen.org/)
 - [Clojure](https://clojure.org/)
+- [Babashka](https://github.com/babashka/babashka)(for e2e tests)
 
 ### Unit tests (without coverage)
 
@@ -70,7 +71,7 @@ xdg-open ./target/coverage/index.html # Linux
 ### End-to-End tests
 
 ```shell
-./e2e-test.sh || rm -rf /tmp/pre-commit-jira-test
+bb e2e_test.clj
 ```
 
 ## Development
