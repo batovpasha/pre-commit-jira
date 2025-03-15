@@ -13,6 +13,9 @@ parameters:
   pre-commit-version:
     type: string
     default: '4.0.1'
+  babashka-version:
+    type: string
+    default: '1.12.197'
 
 executors:
   clojure:
@@ -25,6 +28,11 @@ commands:
       - run: echo 'pre-commit==<< pipeline.parameters.pre-commit-version >>' > requirements.txt
       - python/install-packages:
           pkg-manager: pip
+  install-babashka:
+    steps:
+      - run: curl -sLo bb.tar.gz https://github.com/babashka/babashka/releases/download/v<< pipeline.parameters.babashka-version >>/babashka-<< pipeline.parameters.babashka-version >>-linux-amd64-static.tar.gz
+      - run: tar -xzf bb.tar.gz
+      - run: mv bb /usr/local/bin/bb
 
 jobs:
   lint:
@@ -46,10 +54,11 @@ jobs:
     resource_class: medium
     steps:
       - checkout
+      - install-babashka
       - install-pre-commit
       - run:
           name: Run end-to-end tests
-          command: ./e2e-test.sh
+          command: bb ./e2e-test.sh
   build_image:
     machine:
       image: ubuntu-2004:2024.11.1
