@@ -20,9 +20,9 @@
 
 (defn setup-git-repo
   []
-  (shell "git init")
-  (shell "git config user.email" "batovpasha@gmail.com")
-  (shell "git config user.name" "Pavlo Batov"))
+  (shell {:err :string} "git init")
+  (shell {:err :string} "git config user.email" "batovpasha@gmail.com")
+  (shell {:err :string} "git config user.name" "Pavlo Batov"))
 
 (def pre-commit-config-template
   "
